@@ -98,6 +98,19 @@ def main() -> None:
         layout="wide",
     )
     
+    # 모바일 최적화 CSS
+    st.markdown("""
+        <style>
+        h1 { font-size: 1.8rem !important; margin-bottom: 0.5rem !important; }
+        h2 { font-size: 1.3rem !important; margin-bottom: 0.3rem !important; }
+        .stMetric { font-size: 0.95rem !important; }
+        input, button { font-size: 0.95rem !important; }
+        label { font-size: 0.9rem !important; }
+        p, div { font-size: 0.9rem !important; }
+        .stCaption { font-size: 0.85rem !important; }
+        </style>
+    """, unsafe_allow_html=True)
+    
     initialize_session_state()
     
     st.title("✅ 할 일 관리")
@@ -112,11 +125,11 @@ def main() -> None:
     st.subheader("➕ 새 할 일 추가")
     new_todo = st.text_input(
         "할 일을 입력하세요",
-        placeholder="예: 시장에서 장보기",
+        placeholder="예: 으농비 생각하기",
         label_visibility="collapsed",
     )
     
-    if st.button("추가", type="primary"):
+    if st.button("추가", type="primary", use_container_width=True):
         add_todo(new_todo)
         st.rerun()
     
